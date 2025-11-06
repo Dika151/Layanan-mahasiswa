@@ -1,9 +1,9 @@
 import DashboardLayout from "@/components/layouts/DashboardLayout";
-import Dashboard from "@/components/views/Member/Dashboard";
+import Pengaduan from "@/components/views/Member/Pengaduan";
 const DashboardMemberPage = () => {
   return (
-    <DashboardLayout title="MemberDashboard | Layanan Mahasiswa " type="member">
-        <Dashboard />
+    <DashboardLayout title="MemberPengaduan | Layanan Mahasiswa " type="member">
+       < Pengaduan />
     </DashboardLayout>
   );
 };

@@ -7,6 +7,8 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
 
+import signServices from "@/services/sign";
+
 const loginSchema = yup.object().shape({
   username: yup.string().required("Mohon masukkan Nama atau NIM"),
   password: yup.string().required("Mohon masukkan password"),
@@ -36,6 +38,13 @@ const useLogin = () => {
     resolver: yupResolver(loginSchema),
   });
 
+  // const loginService = async (payload: Ilogin) => {
+  //   const result = await signServices.login(payload);
+  //   return result;
+  //   // if (result.status === 401) {
+  //   //   throw new Error("Nama/NIM atau password tidak sesuai");
+  //   // }
+  // };
   const loginService = async (payload: Ilogin) => {
     const result = await signIn("credentials", {
       ...payload,
@@ -53,7 +62,7 @@ const useLogin = () => {
       setError("root", { message: error.message });
     },
     onSuccess() {
-      router.push(callbackUrl);
+      router.push('/member');
       reset();
     },
   });

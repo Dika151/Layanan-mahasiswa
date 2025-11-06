@@ -44,7 +44,7 @@ const useRegister = () => {
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }, 
     reset,
     setError,
   } = useForm({
@@ -77,6 +77,7 @@ const useRegister = () => {
     errors,
     handleRegister,
     isPendingRegister,
+    
   };
 };
 export default useRegister;

@@ -36,10 +36,11 @@ export default NextAuth({
         const user = profile.data;
 
         if (
-          accessToken &&
-          result.status === 200 &&
-          user._id &&
-          profile.status === 200
+          accessToken
+          //  &&
+          // result.status === 200 &&
+          // user._id &&
+          // profile.status === 200
         ) {
           user.accessToken = accessToken;
           return user;

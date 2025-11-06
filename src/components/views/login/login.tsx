@@ -1,4 +1,5 @@
 import { Button, Card, CardBody, Input, Spinner } from "@nextui-org/react";
+import { useState } from "react";
 import Link from "next/link";
 import useLogin from "./useLogin";
 import { FaEye } from "react-icons/fa";
@@ -7,6 +8,28 @@ import { Controller } from "react-hook-form";
 import { cn } from "@/utils/cn";
 
 const Login = () => {
+
+  const [ username, setUsername ] = useState('');
+  const [ password, setPassword ] = useState('');
+
+  // const loginSub = (e) => {
+  //   try {
+  //     e.preventDefault()
+  //     fetch('http://192.168.43.131:3000/api/sign/mahasiswa', {
+  //       method: 'POST',
+  //       headers: {},
+  //       body: JSON.stringify({
+  //         username,
+  //         password
+  //       })
+  //     }).then((res) => {
+  //       console.log(res);
+  //     })
+  //   } catch (error) {
+      
+  //   }
+  // }
+
   const {
     visiblePassword,
     handleVisiblePassword,
@@ -51,6 +74,7 @@ const Login = () => {
                 "w-80 flex flex-col ",
                 Object.keys(errors).length > 0 ? "gap-2" : "gap-4"
               )}
+              // onSubmit={loginSub}
               onSubmit={handleSubmit(handleLogin)}
             >
               <Controller
@@ -69,6 +93,11 @@ const Login = () => {
                   />
                 )}
               />
+
+                {/* <input type="text" 
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                /> */}
 
               <Controller
                 name="password"
@@ -100,7 +129,12 @@ const Login = () => {
                 )}
               />
 
-              <Button  size="lg" type="submit" radius="full" className="bg-[#5318A8]">
+                {/* <input type="text" 
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                /> */}
+
+              <Button  size="lg" type="submit" radius="full" className="bg-[#5318A8] text-white">
                 {isPendingLogin ? (
                   <Spinner color="white" size="sm" />
                 ) : (
