@@ -3,6 +3,7 @@ import { signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { VscSignOut } from "react-icons/vsc";
 import { cn } from "@/utils/cn";
+import Link from "next/link";
 
 interface sidebarItems {
   key: string;
@@ -23,7 +24,7 @@ const DashboardLaysidebar = (props: propsTypes) => {
       <div>
         <div className="flex justify-center w-full text-white font-semibold gap-4">
           <Image
-            src="logo/logoUnmuh.png"
+            src="/logo/logoUnmuh.png"
             alt="logo"
             width={60}
             height={60}
@@ -51,6 +52,8 @@ const DashboardLaysidebar = (props: propsTypes) => {
               textValue={item.label}
               aria-labelledby={item.label}
               aria-describedby={item.label}
+              as = {Link}
+              href={item.href}  
             >
               <p className="text-small">{item.label}</p>
             </ListboxItem>

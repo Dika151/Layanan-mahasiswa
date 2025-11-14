@@ -1,13 +1,10 @@
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-
-export interface IPengaduan {
-  nama?: string;
-  nim?: string;
-  kategori?: string;
-  deskripsi?: string;
-}
+import { IPengaduan } from "@/types/pengaduan";
+import { useRouter } from "next/router";
+import { useMutation } from "@tanstack/react-query";
+import pengaduanServices from "@/services/pengaduan";
 
 const pengaduanSchema = yup.object({
   nama: yup.string().required("Nama wajib diisi"),
@@ -17,20 +14,44 @@ const pengaduanSchema = yup.object({
 });
 
 const usePengaduan = () => {
+  const router = useRouter();
+
   const {
-      control,
-      handleSubmit,
-      formState: { errors }, 
-      reset,
-      setError,
-    } = useForm({
-      resolver: yupResolver(pengaduanSchema),
+    control,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    setError,
+    setValue,
+  } = useForm({
+    resolver: yupResolver(pengaduanSchema),
+  });
+
+  const pengaduanService = async (payload: IPengaduan) => {
+    const result = await pengaduanServices.pengaduan(payload);
+    return result;
+  };
+
+  const { mutate: mutatePengaduan, isPending: isPendingPengaduan } =
+    useMutation({
+      mutationFn: pengaduanService,
+      onError(error) {
+        setError("root", { message: error.message });
+      },
+      onSuccess() {
+        router.push("pengaduan/success");
+        reset();
+      },
     });
+
+  const handlePengaduan = (data: IPengaduan) => mutatePengaduan(data);
 
   const onSubmit = (data: IPengaduan) => {
     console.log("Data aduan:", data);
     alert("Aduan berhasil dikirim ✅");
     reset();
+    router.push("pengaduan/success");
+    
   };
 
   return {
@@ -39,6 +60,8 @@ const usePengaduan = () => {
     errors,
     reset,
     onSubmit,
+    isPendingPengaduan,
+    handlePengaduan
   };
 };
 export default usePengaduan;
