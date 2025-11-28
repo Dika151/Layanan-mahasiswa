@@ -61,7 +61,7 @@ const Pengaduan = () => {
                 "w-full flex flex-col mt-6",
                 Object.keys(errors).length > 0 ? "gap-3" : "gap-5"
               )}
-              onSubmit={handleSubmit(onSubmit)}
+              onSubmit={handleSubmit(handlePengaduan)}
             >
               <Controller
                 name="nama"

@@ -40,7 +40,7 @@ const Dashboard = () => {
         <div className="flex text-2xl items-center px-8 gap-2 ">
           <MdNotifications className="text-[#5318A8]" size={40} />
           |
-          <Avatar src="logo/logoUnmuh.png" size="md" radius="full" />
+          <Avatar src="/logo/logoUnmuh.png" size="md" radius="full" />
           <p className="font-medium text-small">{dashboardData?.user}</p>
         </div>
       </div>
