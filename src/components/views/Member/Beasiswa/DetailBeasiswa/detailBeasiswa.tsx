@@ -3,14 +3,14 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { MdNotifications } from "react-icons/md";
 import useBeasiswaDetail from "./useDetailBeasiswa";
 import { useRouter } from "next/router";
-import { BeasiswaDetailParams } from "@/types/beasiswa";
+import { BeasiswaDetailsparams } from "@/types/beasiswa";
 
 
 
 const DetailBeasiswa = () => {
   const router = useRouter();
   const id_beasiswa = router.query.id_beasiswa; //contoh static, nanti ambil dari router param
-  const { data, isLoading, isError } = useBeasiswaDetail({id_beasiswa} as BeasiswaDetailParams);
+  const { data, isLoading, isError } = useBeasiswaDetail({id_beasiswa} as BeasiswaDetailsparams);
   return (
     <div className="p-8">
         <div className="flex text-2xl justify-end items-center px-8 gap-2 mb-8 ">
@@ -102,13 +102,13 @@ const DetailBeasiswa = () => {
 
           {/* Buttons */}
           <div className="flex justify-end gap-4">
-            <Button variant="bordered" color="secondary" className="px-10">
+            <Button variant="bordered" color="secondary" className="px-10" onClick={()=> router.push("/member/beasiswa")}>
               Batal
             </Button>
             <Button
               color="secondary"
               className="px-10 bg-purple-600 text-white"
-            >
+             onClick={() =>router.push("daftarbeasiswa")}>
               Daftar
             </Button>
           </div>

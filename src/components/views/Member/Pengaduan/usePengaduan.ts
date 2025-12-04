@@ -45,21 +45,11 @@ const usePengaduan = () => {
     });
 
   const handlePengaduan = (data: IPengaduan) => mutatePengaduan(data);
-
-  const onSubmit = (data: IPengaduan) => {
-    console.log("Data aduan:", data);
-    alert("Aduan berhasil dikirim ✅");
-    reset();
-    router.push("pengaduan/success");
-    
-  };
-
   return {
     control,
     handleSubmit,
     errors,
     reset,
-    onSubmit,
     isPendingPengaduan,
     handlePengaduan
   };

@@ -25,7 +25,6 @@ const Pengaduan = () => {
     handleSubmit,
     errors,
     reset,
-    onSubmit,
     handlePengaduan,
     isPendingPengaduan,
   } = usePengaduan();

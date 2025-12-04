@@ -1,4 +1,4 @@
-interface BeasiswaDetailParams {
+interface BeasiswaDetailsparams{
   id_beasiswa: string;
 }
-export type { BeasiswaDetailParams };
+export type { BeasiswaDetailsparams };
