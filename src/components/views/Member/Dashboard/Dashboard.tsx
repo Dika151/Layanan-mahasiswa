@@ -12,8 +12,10 @@ import { MdNotifications } from "react-icons/md";
 import { defaultStats } from "./cardDashboard";
 import TableRiwayat from "./tableRiwayat";
 import { useDashboard } from "./useDashboard";
+import { Router, useRouter } from "next/router";
 
 const Dashboard = () => {
+  const router = useRouter();
   const { dashboardData, isLoading, isError, refetch } = useDashboard();
   const stats = defaultStats.map((item) => {
     console.log(item)
@@ -75,7 +77,10 @@ const Dashboard = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <Card className="p-1">
+        <Card
+        isPressable
+        onPress={() => router.push ("member/beasiswa/detailbeasiswa")}
+         className="p-1">
           <CardHeader className="flex flex-col gap-2 items-start mb-0">
             <Image
               src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FyZWVyJTIwcGFydHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60"
@@ -90,9 +95,9 @@ const Dashboard = () => {
             </p>
           </CardHeader>
           <CardBody className="mb-0">
-            <h2 className="font-medium">
-              Mobile develover needed for exciting new app
-            </h2>
+            <Link href="member/beasiswa/detailbeasiswa" className="text-black font-medium ">
+            beasiswa mobile develover needed for exciting new app
+            </Link>
           </CardBody>
           <CardFooter className="flex gap-3">
             <Image
