@@ -1,8 +1,15 @@
-import { Avatar, Card, CardBody, CardFooter, CardHeader, Image } from "@nextui-org/react";
-import { useRouter } from "next/router";
+import {
+  Avatar,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Image,
+} from "@nextui-org/react";
 import { MdNotifications } from "react-icons/md";
+import { useRouter } from "next/router";
 
-const Beasiswa = () => {
+const Karir = () => {
     const router = useRouter();
   return (
     <div className="p-6 w-full flex flex-col">
@@ -20,20 +27,17 @@ const Beasiswa = () => {
       </div>
 
       <div className="bg-[#5318A8] items-center justify-center p-6 rounded-lg text-white w-lg mt-4 ">
-        <h2 className="text-3xl  font-semibold mb-2">
-          Beasiswa
-          <br /> Mahasiswa
-        </h2>
+        <h2 className="text-3xl  font-semibold mb-2">Karir <br /> 
+        Mahasiswa</h2>
         <p className="text-small font-light">
-          Jelajahi berbagai program beasiswa yang tersedia untuk <br />{" "}
-          mendukung perjalanan kuliahmu.
+         Temukan peluang kerja yang sesuai dengan minat dan keahlianmu.
         </p>
       </div>
 
-      <h2 className="mt-6 font-semibold ">Beasiswa</h2>
+      <h2 className="mt-6 font-semibold ">karir</h2>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-2">
-        <Card
-         isPressable
+        <Card 
+        isPressable
         onPress={()=> router.push ("karir/detailkarir")}
         className="p-1">
           <CardHeader className="flex flex-col gap-2 items-start mb-0">
@@ -51,7 +55,7 @@ const Beasiswa = () => {
           </CardHeader>
           <CardBody className="mb-0">
             <h2 className="font-medium">
-                Beasiswa Unggulan PT 2024 untuk Mahasiswa Berprestasi
+              Beasiswa Unggulan PT 2024 untuk Mahasiswa Berprestasi
             </h2>
           </CardBody>
           <CardFooter className="flex gap-3">
@@ -69,4 +73,4 @@ const Beasiswa = () => {
     </div>
   );
 };
-export default Beasiswa;
+export default Karir;
